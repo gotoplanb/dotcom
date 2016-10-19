@@ -69,6 +69,5 @@ theme: davestanton
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:gotoplanb/dotcom.git
+  repo: git@github.com:gotoplanb/gotoplanb.github.io.git
   branch: master
-  message: Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}
