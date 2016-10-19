@@ -14,4 +14,4 @@
 ## Deployment
 
 1. `hexo generate`
-2. ?
+2. `hexo deploy`
