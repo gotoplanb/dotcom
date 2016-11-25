@@ -1,6 +1,6 @@
 ---
 title: Safe PostgreSQL Migrations
-date: 2016-11-25 14:40:59
+date: 2016-10-25 14:40:59
 tags:
 ---
 
