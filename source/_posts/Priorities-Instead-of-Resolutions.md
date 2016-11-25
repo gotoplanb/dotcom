@@ -1,7 +1,9 @@
 ---
 title: Priorities Instead of Resolutions in 2017
+date: 2016-11-25 14:40:36
 tags:
 ---
+
 
 I cannot remember why or how I decided last December (2015) to learn how to solve a Rubik's cube. I probably just stumbled across some post somewhere and then made an impulsive Amazon buy. This is a common pattern for me: I try many things but stick with few. On the upside, I'm very good at triaging things and connecting new knowledge into my existing frameworks. The downside is that I've always struggled at learning or doing something completely new without some existing framework or related skills.
 

@@ -1,7 +1,9 @@
 ---
 title: Safe PostgreSQL Migrations
+date: 2016-11-25 14:40:59
 tags:
 ---
+
 
 You never get the database design correct the first time. When it comes times to change the database, you have two paths:
 
