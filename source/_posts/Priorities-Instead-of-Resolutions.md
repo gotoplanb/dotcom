@@ -4,7 +4,6 @@ date: 2016-11-25 14:40:36
 tags:
 ---
 
-
 I cannot remember why or how I decided last December (2015) to learn how to solve a Rubik's cube. I probably just stumbled across some post somewhere and then made an impulsive Amazon buy. This is a common pattern for me: I try many things but stick with few. On the upside, I'm very good at triaging things and connecting new knowledge into my existing frameworks. The downside is that I've always struggled at learning or doing something completely new without some existing framework or related skills.
 
 When the cube arrived at the start of my holiday vacation time, I sat down and started to learn how to solve with a beginner's method tutorial. Three concepts converged for me, but I could not articulate the cumulative importance until now.
