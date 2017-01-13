@@ -16,7 +16,7 @@ tags:
 
 We all want to build reliable software that users love. How we do this varies widely depending on location of the team and discovery processes.
 
-This article will make a case for using a *walking skeleton* approach to quickly [validate your project idea and understand the risks](http://blog.codeclimate.com/blog/2014/03/20/kickstart-your-next-project-with-a-walking-skeleton/.
+This article will make a case for using a *walking skeleton* approach to quickly [validate your project idea and understand the risks](http://blog.codeclimate.com/blog/2014/03/20/kickstart-your-next-project-with-a-walking-skeleton/).
 
 ## What is a walking skeleton?
 
