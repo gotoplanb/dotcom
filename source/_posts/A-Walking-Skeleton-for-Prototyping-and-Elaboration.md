@@ -4,6 +4,8 @@ date: 2017-01-13 15:00:00
 tags:
 ---
 
+###### Articles in this Series
+
 1. A Walking Skeleton for Prototyping and Elaboration
 2. Using Lucidchart for Database Design
 3. Getting Started with PostgreSQL on Heroku
