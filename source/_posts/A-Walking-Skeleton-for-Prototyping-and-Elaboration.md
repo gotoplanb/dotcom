@@ -57,3 +57,5 @@ There is no single best way to build. Everything is an optimization between cost
 ## Okay, I'm convinced! How do I get started with walking skeleton?
 
 Throughout the rest of this article series, I will show you how you can create a walking skeleton that will help you quickly prototype most any type of software project. I will try to strike a balance between generalizing this workflow too broadly or focusing on tightly coupled tools. Each article should be adaptable to many different tools, platforms, and frameworks.
+
+INSERT VIDEO HERE
