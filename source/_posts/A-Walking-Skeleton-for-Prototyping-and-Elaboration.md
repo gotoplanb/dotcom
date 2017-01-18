@@ -10,19 +10,19 @@ In this series, I will show you how I like to setup new software projects as ear
 
 ## Articles in this Series
 
-1. A Walking Skeleton for Prototyping and Elaboration
-2. Using Lucidchart for Database Design
-3. Getting Started with PostgreSQL on Heroku
-4. Creating the Database
-5. Bootstrapping the Database
-6. Generating a RESTful API with Restify
-7. Deploying the API
-8. Configuring a Delivery pipeline
-9. Organizing Your Project Folder
+1. [A Walking Skeleton for Prototyping and Elaboration](/2017/01/13/A-Walking-Skeleton-for-Prototyping-and-Elaboration/)
+2. [Using Lucidchart for Database Design](/2017/01/13/Using-Lucidchart-for-Database-Design/)
+3. [Getting Started with PostgreSQL on Heroku](/2017/01/13/Getting-Started-with-PostgreSQL-on-Heroku/)
+4. [Creating the Database](/2017/01/18/Creating-the-Database/)
+5. [Bootstrapping the Database](/2017/01/18/Bootstrapping-the-Database/)
+6. [Generating a RESTful API with Restify](/2017/01/13/Generating-a-RESTful-API-with-Restify/)
+7. [Deploying the API](/2017/01/18/Deploying-the-API/)
+8. [Configuring a Delivery pipeline](/2017/01/18/Configuring-a-Delivery-Pipeline/)
+9. [Organizing Your Project Folder](/2017/01/18/Organizing-the-Project-Folder/)
 10. Documenting Your API
 11. Testing Your Walking Skeleton
 
-INSERT VIDEO HERE
+[![Video](video.jpg)](https://drive.google.com/file/d/0ByuFVgkS5FT6elVWUnNNNk5oX28/view)
 
 ## Introduction
 
@@ -69,3 +69,5 @@ There is no single best way to build. Everything is an optimization between cost
 Throughout the rest of this article series, I will show you how you can create a walking skeleton that will help you quickly prototype most any type of software project. I will try to strike a balance between generalizing this workflow too broadly or focusing on tightly coupled tools. Each article should be adaptable to many different tools, platforms, and frameworks.
 
 ## Next post in this series
+
+[Using Lucidchart for Database Design](/2017/01/13/Using-Lucidchart-for-Database-Design/)

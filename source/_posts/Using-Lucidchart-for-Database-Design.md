@@ -8,7 +8,7 @@ tags:
 
 This screencast will give you a quick introduction to database design. We will use Lucidchart as a tool to design a database schema for a set of poker cards.
 
-INSERT VIDEO HERE
+[![Video](video.jpg)](https://drive.google.com/file/d/0ByuFVgkS5FT6M3hhRl9yUE1VdEE/view)
 
 ## Transcript
 
@@ -59,4 +59,4 @@ INSERT VIDEO HERE
 
 ## Next post in this series
 
-Getting Started with PostgreSQL on Heroku
+[Getting Started with PostgreSQL on Heroku](/2017/01/13/Getting-Started-with-PostgreSQL-on-Heroku/)
