@@ -4,6 +4,10 @@ date: 2017-01-13 15:00:00
 tags:
 ---
 
+## Caution
+
+Everything in this series is a draft right now. Please submit suggestions via [GitHub](https://github.com/gotoplanb/dotcom/tree/master/source/_posts)
+
 ## tl;dr
 
 In this series, I will show you how I like to setup new software projects as early as possible to help me validate architecture and ensure the developers can start the most valuable features during the first development sprint.
