@@ -4,15 +4,25 @@ date: 2017-01-13 15:00:00
 tags:
 ---
 
-###### Articles in this Series
+## tl;dr
+
+In this series, I will show you how I like to setup new software projects as early as possible to help me validate architecture and ensure the developers can start the most valuable features during the first development sprint.
+
+## Articles in this Series
 
 1. A Walking Skeleton for Prototyping and Elaboration
 2. Using Lucidchart for Database Design
 3. Getting Started with PostgreSQL on Heroku
-4. Generating a RESTful API with Restify
-5. Configuring a Deployment Pipeline with Heroku
-6. Documenting Your API
-7. Testing Your Walking Skeleton
+4. Creating the Database
+5. Bootstrapping the Database
+6. Generating a RESTful API with Restify
+7. Deploying the API
+8. Configuring a Delivery pipeline
+9. Organizing Your Project Folder
+10. Documenting Your API
+11. Testing Your Walking Skeleton
+
+INSERT VIDEO HERE
 
 ## Introduction
 
@@ -58,4 +68,4 @@ There is no single best way to build. Everything is an optimization between cost
 
 Throughout the rest of this article series, I will show you how you can create a walking skeleton that will help you quickly prototype most any type of software project. I will try to strike a balance between generalizing this workflow too broadly or focusing on tightly coupled tools. Each article should be adaptable to many different tools, platforms, and frameworks.
 
-INSERT VIDEO HERE
+## Next post in this series

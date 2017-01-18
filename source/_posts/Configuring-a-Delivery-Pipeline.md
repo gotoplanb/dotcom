@@ -1,6 +1,6 @@
 ---
-title: Configuring a Deployment Pipeline with Heroku
-date: 2017-01-13 15:04:42
+title: Configuring a Delivery Pipeline
+date: 2017-01-18 17:00:32
 tags:
 ---
 

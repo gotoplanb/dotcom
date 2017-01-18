@@ -1,6 +1,6 @@
 ---
-title: Configuring a Deployment Pipeline with Heroku
-date: 2017-01-13 15:04:42
+title: Deploy the API
+date: 2017-01-18 17:00:20
 tags:
 ---
 

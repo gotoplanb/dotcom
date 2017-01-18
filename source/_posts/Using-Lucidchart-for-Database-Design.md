@@ -4,21 +4,9 @@ date: 2017-01-13 15:00:56
 tags:
 ---
 
-###### Articles in this Series
+## tl;dr
 
-1. A Walking Skeleton for Prototyping and Elaboration
-2. Using Lucidchart for Database Design
-3. Getting Started with PostgreSQL on Heroku
-4. Generating a RESTful API with Restify
-5. Configuring a Deployment Pipeline with Heroku
-6. Documenting Your API
-7. Testing Your Walking Skeleton
-
-## Introduction
-
-This screencast will give you a quick introduction to database design. We will use Lucidchart as a tool to design a database schema for a set of poker cards. If you want to learn about object-oriented design, checkout out the excellent INSERT UML TEXT HERE.
-
-## Screencast
+This screencast will give you a quick introduction to database design. We will use Lucidchart as a tool to design a database schema for a set of poker cards.
 
 INSERT VIDEO HERE
 
@@ -69,6 +57,6 @@ INSERT VIDEO HERE
   3. Build schema
   4. Save as “1-create-tables.sql”
 
-## Next
+## Next post in this series
 
 Getting Started with PostgreSQL on Heroku

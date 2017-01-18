@@ -1,6 +1,6 @@
 ---
-title: Configuring a Deployment Pipeline with Heroku
-date: 2017-01-13 15:04:42
+title: Bootstrap the Database
+date: 2017-01-18 17:00:04
 tags:
 ---
 
