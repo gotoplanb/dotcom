@@ -23,7 +23,7 @@ In this series, I will show you how I like to setup new software projects as ear
 7. [Deploying the API](/2017/01/18/Deploying-the-API/)
 8. [Configuring a Delivery pipeline](/2017/01/18/Configuring-a-Delivery-Pipeline/)
 9. [Organizing Your Project Folder](/2017/01/18/Organizing-the-Project-Folder/)
-10. Documenting Your API
+10. [Documenting Your API](/2017/01/30/Documenting-Your-API/)
 11. Testing Your Walking Skeleton
 
 [![Video](video.jpg)](https://drive.google.com/file/d/0ByuFVgkS5FT6elVWUnNNNk5oX28/view)
