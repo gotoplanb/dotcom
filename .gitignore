@@ -1,5 +1,6 @@
 .DS_Store
-.npmignore
-node_modules/
-.deploy_git/
-public/
+/node_modules/
+/src/node_modules/@sapper/
+yarn-error.log
+/cypress/screenshots/
+/__sapper__/
