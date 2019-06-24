@@ -1,46 +1,23 @@
 <style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
 </style>
 
+<script>
+    let date = new Date;
+	let year = date.getUTCFullYear();
+</script>
+
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Dave Stanton: Home</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<header>
+	<h1>My name is Dave Stanton</h1>
+</header>
 
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
+<main>
+	<p>I am a software architect and technical coach. I work with teams to integrate quality, scalability, security, and accessibility into enterprise mobile and cloud projects. I earned a Ph.D. from the University of Florida by researching the behavioral and cognitive effects of interface design.</p>
+</main>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<footer>
+    <p>&copy; {year}</p>
+</footer>
