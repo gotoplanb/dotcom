@@ -18,7 +18,7 @@
 	}
 </style>
 
-<!-- TODO Add this back once there are more pages available <Nav {segment}/> -->
+<Nav {segment}/>
 
 <main>
 	<slot></slot>
