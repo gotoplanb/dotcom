@@ -34,9 +34,56 @@ const posts = [
 
 			<h2>The Heroku Dev Center</h2>
 
-			<p>Coming soon.</p>
+			<p>The Trailmix says this is a 5-minute link. Ha. To do this section right, expect to spend at least an hour to follow every step and do some additional fiddling.</p>
+
+			<p>Heroku provides a getting-started guide using your language of choice. I went with JavaScript/Node. I had previously installed the Heroku CLI, so I made sure to run <code>brew update && brew upgrade && heroku --version</code> to make sure I was on the latest stable version. I'm using v7.26.2 at the time of writing this walkthrough.</p>
+
+			<p>The sample app install works as expected. I also suggest you add the <a href="https://devcenter.heroku.com/articles/heroku-cli-autocomplete">autocomplete plugin</a> to make CLI usage much easier. Also, as we cloned the example project from GitHub, you might want to get rid of the origin remote, as you will never be pushing back to it. <code>git remote -v</code> to see all the remotes. You should <code>origin</code> from when you did the origin clone and <code>heroku</code> remote as a result of running the <code>heroku create</code> command. You can remove the GitHub remote by running <code>git remote rm origin</code>. If you run into an error when you try to provision compute resources with <code>heroku ps:scale web=1</code>, make sure you actually deployed the app with <code>git push heroku master</code> first.</p>
+
+			<p>Heroku Dynos are the primary compute resource you will use. They are kind of like AWS EC2 instances but with all the complexity taken care of for you. You can either manually or auto scale, and you can run most any application code by including a <code>Procfile</code>, which is akin to an AWS CloudFormation template. The whole flow of Heroku is most similar to AWS Elastic Beanstalk including pipelines, slots, and one-click promotion of an app between environments for blue-green deployments. In my opinion you should always use Heroku instead of AWS Elastric Beanstalk. There are some exceptions, but this is a very good rule to follow. Use AWS if you have intense container-management needs and ultra-particularly access requirements, and then have development teams use Heroku Pipelines.</p>
+
+			<p>As you start setting up Heroku Piplines, which I'm sure we will cover later, you won't necessarily have a git remote named <code>heroku</code>, as you instead setup continuous integration and deployments from a hosted git remote like GitHub or GitLab. In this scenario, pretty much ever CLI command is going to fail for you because the CLI won't implictly understand which app you are targeting without having the heroku remote tracked in the local git config. No worries, you can just by using the app argument and explictly pass the name of the app. You can test this by changing to some other arbitrary directory on your computer and then running <code>heroku logs --tail --app morning-cliffs-8675309</code>. Substitute in your app's name. This is where the CLI autocomplete becomes super handy.</p>
+
+			<p><code>heroku local web</code> run your app locally, but this warrants some further explanation. Really you're just running a local webserver. The rest of your add-ons are probably running on Heroku. So, you do get some benefits of having your app rebuilding on local code changes and before you commit to git, but you aren't getting an offline environment. If you want to be able to develop online, you'll have a ton of additional work to setup mocks or run stuff Postgres, etc. locally. Postgres is easy enough to run locally and then use environmental variables to use a local db host when running the web server locall, but this becomes a huge pain if you go all-in with Heroku and us add-ons for auth and whatnot. tl;dr Assume that you need to be online to develop apps for Heroku when you are using anything other than just dynos/compute.</p>
+
+			<p>Heroku add-ons are great. Use Papertrail on every project as a default. It's also super handy that you can SSO from Heroku into pretty much every add-on's management concsole, saving you a ton of headache managing secrets on your team. Just control access to the apps themselves, and then people can get into the add-ons they need. It's actaully quite amazing how many add-ons have free tiers. Also, you don't have to worry about unexpected bills. If you reach a tier maximum, Heroku will tell you the add-on will stop working. It's up to you to then scale that add-on to a paid tier. This is in stark contrast to AWS, where pretty much everythign costs some money to use, and if you leave on certain resources, you can quickly wake up to a few hundred dollars in unexpected charges. Heroku is much safer for experimenting with add-ons.</p>
+
+			<p><code>heroku run bash</code> creates a <a href="https://devcenter.heroku.com/articles/one-off-dynos">one-off dyno</a> for tasks for the app. These one-off dynos are not meant for editing files. You can even experiment by using Bash to delete whatever files you want, but then when you via the app in browser, all will function normally. Instead, use the one-off instances for running database migrations or other kinds of data-modeling introspection. Use <code>heroku run:detached</code> to send output to your logs/Papertrail instead of the console.</code></p>
+
+			<p>Run <code>heroku ps</code> to see what processess you have running. Heroku is super nice to even tell you which pricing tier for each process. You should stop processess you no longer need to conserve your free time or cash money. One-off dynos are shut off after one hour of inactivity. <code>heroku ps:stop web.1</code> will idle your web server. This is like turning off an AWS EC2 instance. Once you visit the URL for the app, Heroku will nicely start the web server for you. You'll notice a slow load the first time as the web server gets going. Heroku <a href="https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping">auto-sleeps dynos</a> that haven't served a request for 30 minutes. Heroku does this to save themselves some money, but it also helps the user to not run out of free time. If you can't tolerate the few seconds it takes a dyno to power up after activity, you probably want to scale to the Hobby dyno tier. There are different ways to keep dynos alive, but if you are hacking this limit, you are probably just going to cause yourself some other problem. That said, you can install the <a href="https://elements.heroku.com/addons/newrelic">New Relic</a> monitoring add-on and set a reporting interval of 30 seconds. New Relic is great, and you probably want to consider for your product apps anyway.</p>
+
+			<p>When you start modifying <code>index.js</code>, be sure that you are adding your additional <code>.get</code> routes before the line with <code>.listen</code> or else the routes will not be available and the web server will crash.</p>
+
+			<p>You set enviornmental variables locally via the <code>.env</code> file and then run <code>heroku local</code> to load the environmental variables and then the web server. To update environmental variables for your Heroku apps, you either can set in the CLI via <code>heroku config:set <key>:<value></code> or via the browser-based management console for your apps at a URL like <code>https://dashboard.heroku.com/apps/morning-cliffs-8675309/settings</code>.</p>
+
+			<p>Getting PostgreSQL running can be a little bit of a pain. I used <code>brew cask install postgres</code> and then started the local database server with TODO. If you're going to be actually using Heroku, you will be using Posgres a lot, so it is worth it to buy a client like <a href="https://macpostgresclient.com/">SQLPro for Postgres</a>. If you run <code>heroku config</code> to get the database connection string, you can split out all the pieces you need to connect from SQLPro for Postgres directly to your Heroku Postgres database. For example: <code>user = rmxfxlaxgoetzy , password = ab0097923284d13a9d8a87068f6abb40da39cd2688b72a5dfcf832addba775ae , host = ec2-107-20-237-237.compute-1.amazonaws.com , port = 5432 , database = 2dq5lmvp72fdec</code></p>
+
+			<h2>How Heroku Works</h2>
+
+			<p>coming soon</p>
 		`
-	}
+	},
+	{
+		title: 'Walkthrough: Lightning Experience Specialist Superbadge',
+		slug: 'walk-lex-specialist-sb',
+		html: `
+			<p>TODO</p>
+		`
+	},
+	{
+		title: 'Walkthrough: Lightning Experience Rollout Specialist Superbadge',
+		slug: 'walk-lex-rollout-sb',
+		html: `
+			<p>TODO</p>
+		`
+	},
+	{
+		title: 'Walkthrough: Build an Automated Workshop Management System Project',
+		slug: 'walk-auto-workshop-proj',
+		html: `
+			<p>TODO</p>
+		`
+	},
 ];
 
 posts.forEach(post => {
