@@ -60,6 +60,47 @@ const posts = [
 
 			<h2>How Heroku Works</h2>
 
+			<p>Heroku should auto-run your apps by analyzing the file types. If you need anything other than barebones defaults, you probably will use a <a href="https://devcenter.heroku.com/articles/procfile">Procfile</a> to define the stack and build configuration. Each line of the <code>Procfile</code> let's to target a process and pass the command that process should run. For example: <code>web: bundle exec rails server -p $PORT</code> for a Rails project.</p>
+
+			<p>Deployments are done via Git. You can either push a Git commit to Heroku and cause the app to build or you can push to an arbitrary Git remote (e.g. GitHub) and then have Heroku listening for changes. On commit to the remote, Heroku can pull and build.</p>
+
+			<p>Commands you will use often:</>
+
+			<dl>
+				<dt><code>heroku ps</code></dt>
+				<dd>List processes for the given app</dd>
+			</dl>
+
+			<dl>
+				<dt><code>heroku logs</code></dt>
+				<dd>View logs for the app</dd>
+			</dl>
+
+			<dl>
+				<dt><code>heroku ps:scale web=2 worker=4</code></dt>
+				<dd>Scale the web process to 2 dynos and worker process to 4 dynos</dd>
+			</dl>
+
+			<p>The names for the process are arbitrary, other than web. You can create whatever processess you want including multiple workers so that you have multiple queues. If you want to build Docker images, use a <code>heroku.yml</code> instead of a <code>Procfile</code>.</p>
+
+			<h2>Heroku Enterprise Basics</h2>
+
+			<p>Most of the Trailhead module is pretty straight forward and a repeat of the work you did in the Heroku getting-started guide. Heroku Enterprise gives you Heroku Connect, single sign-on, Private Spaces, and optionally technical support.</p>
+			
+			<p>A Heroku Enterprise Team can have admin, member, and viewer roles. Users can have four different "privilege sets" for an app: view, deploy, operate, and manage. Privilege sets are added ad-hoc and are not cumulative. For example, a user could have <code>deploy</code> and <code>operation</code> or maybe just one of them. Review the <a href="https://devcenter.heroku.com/articles/app-permissions">matrix of privileges by role</a>. All users get <code>view</code> by default. If a user has the <code>manage</code> privilege, then that user can assign themself additional privileges. Only admins can mess with <a href="https://devcenter.heroku.com/articles/private-spaces#private-space-management">Private Spaces</a>. Enterprise teams can have a whitelist of add-ons, so that members can provision at will for apps within the team. The <code>deploy</code> privilege lets a user provision paid add-ons, while the <code>operate</code> privilege allows for paid add-ons.</p>
+
+			<p>Consolidated billing shows resources usage (e.g. dyno count) and total spend across the team. You also get historical trends. You can set maximums for dynos and aggregate add-on spend per month. These caps are at the team level. I do not think you can set at the app level.</p>
+
+			<p>Heroku Connect syncs data between a Salesforce org and a Postgres database. There is a future section on Heroku Connect, so I will avoid descending into detail for now.</p>
+
+			<p>Heroku Enterprise supports Salesforce Identity, Okta, Bitium, and Ping identity providers by default or any SAML 2.0–compliant identity provider if you want it bad enough.</p>
+
+			<p>Heroku Private spaces are basically a whitelabeled AWS VPC. Your resources are collocated, so that all inter-process traffic is kept inside a private IP range and does not traverse the public internet. You pay a lot for this, but you may need to for compliance reasons. Also your latency will be much faster.</p>
+
+			<p>Heroku Enterprise allows you to get more support. There is not standard pricing this support. I assume SLAs are negotiated.</p>
+
+			<h2>Dynos, Stacks, Networking</h2>
+
 			<p>coming soon</p>
 		`
 	},
@@ -67,7 +108,33 @@ const posts = [
 		title: 'Walkthrough: Lightning Experience Specialist Superbadge',
 		slug: 'walk-lex-specialist-sb',
 		html: `
-			<p>TODO</p>
+			<p>I wasn't sure whether to work on this Superbadge first or the Lightning Experience Rollout Specialist. Seemed better to know a thing than how to rollout a thing, so here is where I started. Also that other superbadge is estimtated to take twice as long at 12 hours. Yikes! Hopefully going through this superbadge first will help the other go faster.</p>
+
+			<h2>Sections</h2>
+			
+			<h3>Prework and Notes</h3>
+
+			<p>Remember opportunity product service dates from 1/1/2026 to 12/31/2026.</p>
+
+			<h3>Use Case</h3>
+
+			<p>Nothing to note.</p>
+
+			<h3>Standard Objects</h3>
+
+			<p>You cannot rename standard objects from the Object Manager. Instead you have to use the "Rename Tabs and Labels" screen in Setup. When you try to add Case record types, you will get a message that says you need a Support Process first. I created one called "Issues" and then created the two record types.</p>
+
+			<h3>Custom Objects</h3>
+
+			<h2>Validation</h2>
+
+			<h3>Take the Sales Path quiz</h3>
+
+			<p>Apparently I already took this. I can't remember. I should add some details here or get feedback from other people.</p>
+
+			<h3>Provide in-app guidance to sales reps</h3>
+
+			<p>There is a ton of stuff to do to get this step to pass.</p>
 		`
 	},
 	{
