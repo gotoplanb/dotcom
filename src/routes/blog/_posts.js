@@ -114,7 +114,7 @@ const posts = [
 			
 			<h3>Prework and Notes</h3>
 
-			<p>Remember opportunity product service dates from 1/1/2026 to 12/31/2026.</p>
+			<p>Remember opportunity product service dates from 1/1/2026 to 12/31/2026. I found all the object renaming an unnecessary complication that led to confusion and self-doubt.</p>
 
 			<h3>Use Case</h3>
 
@@ -122,9 +122,77 @@ const posts = [
 
 			<h3>Standard Objects</h3>
 
-			<p>You cannot rename standard objects from the Object Manager. Instead you have to use the "Rename Tabs and Labels" screen in Setup. When you try to add Case record types, you will get a message that says you need a Support Process first. I created one called "Issues" and then created the two record types.</p>
+			<p>You cannot rename standard objects from the Object Manager. Instead you have to use the "Rename Tabs and Labels" screen in Setup. When you try to add Case record types, you will get a message that says you need a Support Process first. I created one called "Issues" and then created the two record types. Based off master. Be sure to set as active. I assign Case Layout as the layout for all profiles.</p>
+
+			<p>Adventure Package uses OpportunityLineItem.ServiceDate field for the date of the adventure.</p>
 
 			<h3>Custom Objects</h3>
+
+			<p>Fulfillment object is like an order. Unsure why we are using a custom object here whereas we used renamed standard objects elsewhere.</p>
+
+			<h3>Sales Process Customization</h3>
+
+			<p>Stage updates are on the now-named Adeventure object. I created a New stage and then deleted all of the opportunity stages picklist values and just rebuilt from scratch. I left all stages as pipeline values. I left all stages as Open status except for Completed as Closed/Won status and Cancelled as Closed/Lost status.</p>
+
+			<p>Create a Path for the Opportunity object using the Stage picklist. The validator didn't yell at me even when I didn't have the path. I also enabled confetti for the Completed stage because why not have a little fun.</p>
+
+			<h3>Opportunity Discount Approvals</h3>
+
+			<p>Remember to create another user and set this user as your manager. Otherwise you'll get some really cryptic errors. I created an approval step, then approval and rejection actions on that step. I did not create final approval or rejection step.</p>
+
+			<h3>Fulfillment Creation</h3>
+
+			<p>This is Process Builder stuff. The "Name" field in the first column is really Fulfillment Name. The "Id" in the third column is really "Line Item ID". The formula is <code>[OpportunityLineItem].Product2.Name + " - " + [OpportunityLineItem].Id </code></p>
+
+			<h3>Sales Automation</h3>
+
+			<p>When they say opportunity status, they really mean the stage field. Edit the page layout for Opportunities, and add Fulfillments to the related lists. This will make it much easier to validate your work. Since Lightning will refresh each component on the page separately, you'll notice a quick flash during re-rendering when the Fulfillments are updated as a result of your process.</p>
+
+			<h3>Fulfillment Cancellation Automation</h3>
+
+			<p>This process uses a filter criteria for updating records, since when you get <code>[Fulfillment__c].Opportunity.OpportunityLineItems</code> the result is a list becuase this is a master-detail relationship. You can't iterate through a list with Process Builder, so you need use a filter formula to get the specific Opportunity Line Item (aka Adventure Package) item.</p>
+
+			<p>As an aside, you can iterate through a list with a Flow. If you needed to update all ofthe detail records, you would move your update logic into the Flow then have your Process Builder action be to call the Flow from the master side.</p>
+
+			<h3>Support Process</h3>
+
+			<p>Case Reason is a picklist on the Case object. Delete the old values, and add the new values.</p>
+			
+			<h3>Expedition Leader Support</h3>
+			
+			<p>Now we need to create a new action on the Fulfillment object to create a Case record. Select a record type. Your name will be <code>New_Expedition_Leader_Case</code>. Add the fields as described. Explorer is really Contact Name. Also add the predefined value for priority as high. The other two fields are autopoplated from forumulas.</p>
+
+			<p>Edit the Fulfillment object page layout. Add the "New Expedition Leader Case" global action to the "Mobile & Lightning Actions" section of the layout.</p>
+
+			<h3>Import Data</h3>
+
+			<p>I uploaded the XLSX file to Google Sheets, so that I could download each as a CSV. There are not that many Explorer records, so the Data Import Wizard should work. I did not match Contacts or Accounts. All mappings should be the Explorer (aka Contact) fields.</p>
+
+			<p>Adventures (aka Product2) and Opportunity records cannot be uploaded via the Data Import Wizard. You can use either the <a href="https://dataloader.io">web-based Data Loader</a> or <a href="https://help.salesforce.com/articleView?id=loader_install_mac.htm">download Data Loader</a> for you computer. I used the web version.</p>
+
+			<p>Before importing Opportunities, you can should create a record type named <code>Individual Opportutunity</code>. While you are in setup, also look at Opportunity Contact Roles and set one of the values as default. When you upload Opportunity Contact Roles later, you will need a default, so that these junction objects are made for you.</p>
+
+			<p>Upload your adventures (aka products). I then made sure each product was added to the standard pricebook.</p>
+
+			<p>Note that the <code>Opps w Adventure + Explorer</code> sheet is denormalized, meaning it containts data that needs to get loaded into multiple objects -- opporunities, opportunity contact roles, and adventure packages. This definitely tripped me up the first time through.</p>
+
+			<p>Upload opportunities. Map as many fields as are relevant. Lookup explorers by <code>Full Name</code>. Upload opprtunity contact roles. Map opportunity by <code>Name</code> and explorers by <code>Full Name</code>. Upload adventure packages. Map adventure, explorer, quanity, and sales price. Lookup adventure by <code>Product Code</code> and explorers by <code>Full Name</code>.</p>
+
+			<h3>UI Changes for Sales Reps</h3>
+
+			<p>Go to any adventure record, edit page, then add the <code>PictureGallery</code> custom component. Save. Activate as org default.</p>
+
+			<p>Create the report using the <code>Opportunities with Adventures</code> type. Notice the product dates filter should be in the year 2026. Group by product name. Group by stage. Save and run. Save in the public reports folder. Stacked vertical bar is the same thing as a stacked column chart. All of my adventures (aka opportunties) were in the new stage, so I edited a few to be different stages to verify the stacked vertical bar chart was grouping as expected.</p>
+
+			<p>Edit the adventure record page again. There is no section component, but I think what they mean is to add a third, custom tab to the existing tabs component and name this <code>Adventure Comparison</code>. I made this custom tab come after the Details tab. </p>
+
+			<h3>UI Changes for the Fulfillment Team</h3>
+
+			<p>This section is asking you to set a compact layout that will populate the Highlights component on a record page. Go to setup, Object Manager, Fulfillment, Compact Layouts, then click New. Type any name. Select the five fields mentioned in the instructions then click Save. Click comact layout assignemnt, edit assignment, select your new compact layout from the picklist, then Save.</p>
+
+			<h3>General UI Changes</h3>
+
+			<p>I edited the visibile tabs within the Sales (i.e. LightningSales)app via the App Manager. Go to myDomain and change background color to any value.</p>
 
 			<h2>Validation</h2>
 
@@ -134,7 +202,44 @@ const posts = [
 
 			<h3>Provide in-app guidance to sales reps</h3>
 
-			<p>There is a ton of stuff to do to get this step to pass.</p>
+			<p>There is a ton of stuff to do to get this step to pass. Absolutely should be split into multiple validation steps.</p>
+			
+			<p><code>Challenge Not yet complete... here's what's wrong: 
+			The 'Approval for Package Deal' approval process does not appear to be working properly. Please check the requirement to ensure your process is configured correctly.</code> is too vague and provides no guidance. I think this occurs when the approval process has not been activated.</p>
+
+			<p>If you get cryptic processing errors, and likely an email report, then make sure you created a second user and set as your manager. Even though the approver is the opportunity owner, you might run into this processing problem as the user hierarchy is empty.<p>
+
+			<h3>Take the Lightning Experience rollout quiz</h3>
+
+			<p>Easy peasy lemon squeezy.</p>
+
+			<h3>Automate the creation of fulfillments</h3>
+
+			<p>The renaming of things to be adventures and such made this much more confusing than necessary.</p>
+
+			<h3>Automate your sales process for various opportunity stages</h3>
+
+			<p>No issues.</p>
+
+			<h3>Automate fulfillment cancellation actions</h3>
+
+			<p>Ensure your criteria to update <code>Line Item ID</code> equal <code>[Fulfillment__c].AdventurePackageId__c</code>.</p>
+
+			<h3>Customize support processes</h3>
+
+			<p>Check that your predefined field values are <code>Fulfillment__c.Explorer__r.Id</code> and <code>Fulfillment__c.Id</code>.</p>
+
+			<h3>Import data from legacy systems</h3>
+
+			<p>If you get this wrong, you just get a less-than-helpful messages to make sure you have done everything correctly. Double check an opporunity to ensure you have related adventure packages, fulfillment, and opportunity contact role. </p>
+
+			<h3>Customize the Lightning user interface</h3>
+
+			<p>No issues.</p>
+
+			<h2>Next Steps</h2>
+
+			<p></p>
 		`
 	},
 	{
