@@ -237,9 +237,9 @@ const posts = [
 
 			<p>No issues.</p>
 
-			<h2>Next Steps</h2>
+			<h2>Summary</h2>
 
-			<p></p>
+			<p>This was a pretty fun and informative superbadge to complete. The renaming the standard objects made this more tricky than it needed to be. Also having a denormalized dataset for importing tripped me up on first attempt.</p>
 		`
 	},
 	{
