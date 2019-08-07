@@ -256,6 +256,56 @@ const posts = [
 			<p>TODO</p>
 		`
 	},
+	{
+		title: 'Cookbook: Creating a new Salesforce DX project',
+		slug: 'cook-salesforce-project-dx',
+		html: `
+			<h2>Dependencies</h2>
+
+			<ul>
+				<li>SFDX CLI</li>
+				<li>VS Code</li>
+				<li>VS Code extensions for Salesforce</li>
+			</ul>
+		
+			<h2>Setup</h2>
+
+			<ol>
+				<li>Create a new GitHub repository {{project-name}} without a readme</li>
+				<li><code>sfdx force:project:create -n {{ProjectName}}</code></li>
+				<li><code>cd {{ProjectName}}</code></li>
+				<li><code>git init</code></li>
+				<li><code>git remote add origin {{git url}}</code></li>
+				<li><code>git add .</code></li>
+				<li><code>git commit -m "Init."</code></li>
+				<li><code>git push origin master</code></li>
+				<li><code>sfdx force:auth:web:login -d -a {{DevHubAliasName}}</code></li>
+			</ol>
+
+			<h2>Dev</h2>
+
+			<ol>
+				<li><code>git pull origin master</code></li>
+				<li><code>git checkout -b {{feature/branch-name}}</code></li>
+				<li><code>sfdx force:org:create -a {{BranchName}} -s -f config/project-scratch-def.json -d 30</code></li>
+				<li><code>code .</code></li>
+				<li>SFDX: Pull Source from Default Scratch Org</li>
+				<li>SFDX: Create Lightning Web Component</li>
+				<li>SFDX: Push Source to Default Scratch Org</li>
+				<li>SFDX: Open Default Org</li>
+				<li><code>git add .</code></li>
+				<li><code>git commit -m "Completes {{BranchName}}. "</code></li>
+				<li><code>git push origin {{feature/branch-name}}</code></li>
+				<li><code>git checkout master</code></li>
+				<li><code>sfdx force:org:delete -u {{BranchName}}</code></li>
+			</ol>
+
+			<h2>Deployment</h2>
+
+			<p>Follow https://trailhead.salesforce.com/content/learn/modules/sfdx_app_dev/sfdx_app_dev_deploy</p>
+
+		`
+	},
 ];
 
 posts.forEach(post => {
