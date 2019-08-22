@@ -246,14 +246,48 @@ const posts = [
 		title: 'Walkthrough: Lightning Experience Rollout Specialist Superbadge',
 		slug: 'walk-lex-rollout-sb',
 		html: `
-			<p>TODO</p>
+			<p>Easy enough to creat the permission sets for step 1. Quiz was reasonsble for step 2. Readiness report seems to use Magic Mover for step 3, but install fails. Dependent class is invalid and needs recompilation: Class LEXMAGICMOVER.NAMUtils : Dependent class is invalid and needs recompilation: Class LEXMAGICMOVER.ATFMigratorBatch : Dependent class is invalid and needs recompilation: Class LEXMAGICMOVER.ATFMigratorBatchHelper : Field is not writeable: ContentVersion.CreatedDate</p>
 		`
 	},
 	{
-		title: 'Walkthrough: Build an Automated Workshop Management System Project',
-		slug: 'walk-auto-workshop-proj',
+		title: 'Cookbook: Creating a native iOS app using Salesforce SDKs',
+		slug: 'cook-ios-salesforce-sdks',
 		html: `
-			<p>TODO</p>
+			<h2>Dependencies</h2>
+
+			<ul>
+				<li>forceios CLI</li>
+				<li>Xcode</li>
+			</ul>
+		
+			<h2>Setup</h2>
+
+			<h3>Create a Connected App</h3>
+
+			<ol>
+				<li>Login to your Salesforce org</li>
+				<li>Setup > App Manager > New Connected App</li>
+				<li>Enable OAuth Settings</li>
+				<li>Add some callback url like <code>testsfdc:///mobilesdk/detect/oauth/done</code></li>
+				<li>Select and add <code>api</code>, <code>web</code>, and <code>refresh_token, offline_access</code> to the Selected OAuth Scopes</li>
+				<li>Copy the Consumer Key and Callback URL values</li>
+				<li>Setup > Permission Sets > New</li>
+				<li>Go into the Assigned Connected Apps section of the new Permission Set and click Edit</li>
+				<li>Select the Connected App you previously made, add, and save.</li>
+				<li>Manage Assignments > Select your user > Assign</li>
+			</ol>
+
+			<h3>Create the iOS project</h3>
+
+			<ol>
+				<li>Open the terminal</li>
+				<li>Run <code>forceios create</code> to make the Swift starter app</li>
+				<li>Use Xcode to open the <code>.xcworkshop</code> file</li>
+				<li>Open the Supporting Files > <code>bootconfig.plist</code> file</li>
+				<li>Update <code>remoteAccessConsumerKey</code> and <code>oauthRedirectUri</code> to match your Connected App</li>
+				<li>Add two more <code>oauthScopes</code> items with values <code>refresh_token</code> and <code>offline_access</code></li>
+				<li>Build and run the app</li>
+			</ol>
 		`
 	},
 	{
