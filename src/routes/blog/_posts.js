@@ -246,7 +246,7 @@ const posts = [
 		title: 'Walkthrough: Lightning Experience Rollout Specialist Superbadge',
 		slug: 'walk-lex-rollout-sb',
 		html: `
-			<p>Easy enough to creat the permission sets for step 1. Quiz was reasonsble for step 2. Readiness report seems to use Magic Mover for step 3, but install fails. Dependent class is invalid and needs recompilation: Class LEXMAGICMOVER.NAMUtils : Dependent class is invalid and needs recompilation: Class LEXMAGICMOVER.ATFMigratorBatch : Dependent class is invalid and needs recompilation: Class LEXMAGICMOVER.ATFMigratorBatchHelper : Field is not writeable: ContentVersion.CreatedDate</p>
+			<p>Overall, this superbadge was not hard but was frustrating because there were vague requirements especially related to the readiness report. There were good answers in the Salesforce Developer community for any of the specific errors I had.</p>
 		`
 	},
 	{
@@ -300,6 +300,7 @@ const posts = [
 				<li>SFDX CLI</li>
 				<li>VS Code</li>
 				<li>VS Code extensions for Salesforce</li>
+				<li><code>sfdx plugins:install @salesforce/lwc-dev-server</code></li>
 			</ul>
 		
 			<h2>Setup</h2>
@@ -322,6 +323,7 @@ const posts = [
 				<li><code>git pull origin master</code></li>
 				<li><code>git checkout -b {{feature/branch-name}}</code></li>
 				<li><code>sfdx force:org:create -a {{BranchName}} -s -f config/project-scratch-def.json -d 30</code></li>
+				<li><code>sfdx force:lightning:lwc:start</code><li>
 				<li><code>code .</code></li>
 				<li>SFDX: Pull Source from Default Scratch Org</li>
 				<li>SFDX: Create Lightning Web Component</li>
